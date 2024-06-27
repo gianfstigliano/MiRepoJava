@@ -8,11 +8,13 @@ import com.hibernate.jpa1.model.Vehiculo;
 import com.hibernate.jpa1.repository.IVehiculoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Giani
  */
+@Service
 public class VehiculoService implements IVehiculoService {
     
     @Autowired
