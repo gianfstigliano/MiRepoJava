@@ -46,16 +46,16 @@ public class VehiculoService implements IVehiculoService {
     @Override
     public void editVehiculo(Long idOriginal, Long idNueva, String nuevoTipo, String nuevaMarca, String nuevoModelo) {
             
-//busco  el objeto original
+
             Vehiculo vehiculo = this.findVehiculo(idOriginal);
             
-            //proceso de modificación a nivel lógico
+            
             vehiculo.setIdVehiculo(idNueva);
             vehiculo.setTipo(nuevoTipo);
             vehiculo.setMarca(nuevaMarca);
             vehiculo.setModelo(nuevoModelo);
             
-            //guardar los cambios
+           
             this.saveVehiculo(vehiculo);
     }
 

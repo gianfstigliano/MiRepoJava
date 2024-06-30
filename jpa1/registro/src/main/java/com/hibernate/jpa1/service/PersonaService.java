@@ -42,16 +42,16 @@ public class PersonaService implements IPersonaService {
     @Override
     public void editPersona(Long idOriginal, Long idNueva, String nuevoNombre, String nuevoApellido, int nuevaEdad) {
             
-//busco  el objeto original
+
             Persona perso = this.findPersona(idOriginal);
             
-            //proceso de modificación a nivel lógico
+            
             perso.setId(idNueva);
             perso.setNombre(nuevoNombre);
             perso.setApellido(nuevoApellido);
             perso.setEdad(nuevaEdad);
             
-            //guardar los cambios
+            
             this.savePersona(perso);
     }
 
