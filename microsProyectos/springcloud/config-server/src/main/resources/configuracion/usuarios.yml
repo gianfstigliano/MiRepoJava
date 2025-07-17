@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+
+spring:
+  config:
+    activate:
+      on-profile: default
+  application:
+    name: usuarios
+    zipkin:
+      base-url: http://zipkin:9411
+  h2:
+    console:
+      enabled: false
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: postgres
+    password: secret
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      shared:
+        sliding-window-type: count_based #Basado en contador
+        sliding-window-size: 5 #Número de llamadas fallidas permitidas
+        slow-call-rate-threshold: 50 #Porcentaje que vamos a permitir de llamadas fallidas o lentas
+        permitted-number-of-calls-in-half-open-state: 1 #Número de llamadas permitidas en el estado medio abierto
+        max-wait-duration-in-half-open-state: 10s #Tiempo de duración máximo del estado medio abierto
+        wait-duration-in-open-state: 10s #Tiempo duración estado abierto
+        writable-stack-trace-enabled: true #Logs por consola
+        automatic-transition-from-open-to-half-open-enabled: true
+    instances:
+      pizza-read:
+        base-config: shared
