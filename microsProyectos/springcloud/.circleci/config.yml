@@ -1,0 +1,35 @@
+version: 2.1
+executors:
+  java-executor:
+    docker:
+      - image: cimg/openjdk:11.0
+    working_directory: ~/project
+jobs:
+  build:
+    executor: java-executor
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - maven-cache-{{ checksum "pom.xml" }}
+            - maven-cache-
+      - run:
+          name: Build with Maven
+          command: mvn clean package
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: maven-cache-{{ checksum "pom.xml" }}
+      - store_artifacts:
+          path: target
+          destination: jar-files
+      - run:
+          name: Build and Run with Docker Compose
+          command: docker-compose up --build -d
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+
