@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "org.f1.agrupadorentradas.avro",
+  "name": "EntradasKey",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    }
+  ]
+}

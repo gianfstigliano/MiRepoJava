@@ -1,0 +1,50 @@
+{
+  "type": "record",
+  "namespace": "org.f1.asignadorusuariosentradas.avro",
+  "name": "UsuariosEntradasValue",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    },
+    {
+      "name": "nombreUsuario",
+      "type": "string"
+    },
+    {
+      "name": "entradas",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "namespace": "org.f1.asignadorpais.avro",
+          "name": "Entrada",
+          "fields": [
+            {
+              "name": "tipoEntrada",
+              "type": {
+                "type": "enum",
+                "name": "TipoEntrada",
+                "symbols": ["GENERAL", "VIP"]
+              }
+            },
+            {
+              "name": "evento",
+              "type": {
+                "type": "enum",
+                "name": "Evento",
+                "symbols": ["MONZA", "MONACO", "SILVERSTONE", "SPA"]
+              }
+            },
+            {"name": "precio",
+              "type": "double"
+            },
+            {"name": "pais",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

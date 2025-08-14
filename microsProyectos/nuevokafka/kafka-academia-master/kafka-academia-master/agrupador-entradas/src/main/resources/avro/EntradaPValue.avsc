@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "namespace": "org.f1.asignadorpais.avro",
+  "name": "EntradaPValue",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    },
+    {
+      "name": "tipoEntrada",
+      "type": {
+        "type": "enum",
+        "name": "TipoEntrada",
+        "namespace": "org.f1.asignadorpais.avro",
+        "symbols": ["GENERAL", "VIP"]
+      }
+    },
+    {
+      "name": "evento",
+      "type": {
+        "type": "enum",
+        "name": "Evento",
+        "namespace": "org.f1.asignadorpais.avro",
+        "symbols": ["MONZA", "MONACO", "SILVERSTONE", "SPA"]
+      }
+    },
+    {
+      "name": "precio",
+      "type": "double"
+    },
+    {
+      "name": "pais",
+      "type": "string"  // Ya no es nullable, ahora será un string con el país asignado
+    }
+  ]
+}

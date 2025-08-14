@@ -1,0 +1,32 @@
+{
+  "type": "record",
+  "namespace": "org.f1.enviadorentradas.avro",
+  "name": "EntradaValue",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    },
+    {
+      "name": "tipoEntrada",
+      "type": {
+        "type": "enum",
+        "name": "TipoEntrada",
+        "namespace": "org.f1.enviadorentradas.avro",
+        "symbols": ["GENERAL", "VIP"]
+      }
+    },
+    {
+      "name": "evento",
+      "type": {
+        "type": "enum",
+        "name": "Evento",
+        "namespace": "org.f1.enviadorentradas.avro",
+        "symbols": ["MONZA", "MONACO", "SILVERSTONE", "SPA"]
+      }
+    },
+    {"name": "precio",
+    "type": "double"
+    }
+  ]
+}

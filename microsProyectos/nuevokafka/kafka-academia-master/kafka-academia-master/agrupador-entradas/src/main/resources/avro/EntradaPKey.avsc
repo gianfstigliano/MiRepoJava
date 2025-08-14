@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "org.f1.asignadorpais.avro",
+  "name": "EntradaPKey",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    }
+  ]
+}

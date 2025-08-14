@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "namespace": "org.f1.pcs.avro",
+  "name": "RecaudacionValue",
+  "fields": [
+    {
+      "name": "idUsuario",
+      "type": "string"
+    },
+    {
+      "name": "evento",
+      "type": {
+        "type": "enum",
+        "name": "Evento",
+        "namespace": "org.f1.enviadorentradas.avro",
+        "symbols": ["MONZA", "MONACO", "SILVERSTONE", "SPA"]
+      }
+    },
+    {
+      "name": "recaudacionTotal",
+      "type": "double"
+    }
+  ]
+}

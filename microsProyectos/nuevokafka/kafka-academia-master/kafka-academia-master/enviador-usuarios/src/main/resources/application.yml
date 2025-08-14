@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: enviador-usuarios
+  kafka:
+    bootstrap-servers: ${kafka:localhost}:29092
+    producer:
+      key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: http://${schema-registry:localhost}:8081
+
+  datasource:
+    url: jdbc:postgresql://enviador-usuarios-db:5432/postgres
+    username: postgres
+    password: postgres
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate.ddl-auto: update
+
+environment:
+  usuario-topic: usuario
